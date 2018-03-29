@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Session Fun!</h1>
+    <h3>Hello, @ViewBag.Name</h3>
+    <p>Let's have some fun with session</p>
+    <hr>
+    <h3>Counter: @ViewBag.Count</h3>
+    <a href="/counter"><button>+</button></a>
+    <a href="/reset"><button>RESET</button></a>
+    <hr>
+    <h3>Add Some Names</h3>
+    <form action="/name" method="post">
+        <input type="text" name="name" id="" placeholder="Enter your Name:">
+        <input type="submit" value="Add Name">
+    </form>
+    <hr>
+    <h3>All the NAMES!</h3>
+    @foreach(string name in ViewBag.Names)
+    {
+        <p>@name</p>
+    }
+</body>
+</html>
