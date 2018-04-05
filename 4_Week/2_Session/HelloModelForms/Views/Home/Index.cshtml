@@ -1,0 +1,39 @@
+﻿@model Player
+<h1>All of our players:</h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var player in ViewBag.Players)
+    {
+        <tr>
+            <td>@player["first_name"] @player["last_name"]</td>
+            <td>@player["number"]</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<h1>Add A Player</h1>
+<hr>
+<form asp-action="Create" asp-controller="Home" method="post">
+    <div class="form-group">
+        <span asp-validation-for="FirstName"></span>
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName">
+    </div>
+    <div class="form-group">
+        <span asp-validation-for="LastName"></span>
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName">
+    </div>
+    <div class="form-group">
+        <span asp-validation-for="Number"></span>
+        <label asp-for="Number"></label>
+        <input asp-for="Number">
+    </div>
+    <input type="submit" value="Add Player">
+</form>
