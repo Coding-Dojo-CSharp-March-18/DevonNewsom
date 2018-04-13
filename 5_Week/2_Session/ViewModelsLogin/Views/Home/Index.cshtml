@@ -1,0 +1,12 @@
+@{
+    LogUser logUser = new LogUser()
+    {
+        secret_code = 5
+    };
+    ViewDataDictionary registerViewData = new ViewDataDictionary(this.ViewData)
+    {
+        {"secret_code", "This is a secret code"}
+    };
+}
+@Html.Partial("Registration", registerViewData)
+@Html.Partial("Login", logUser)
