@@ -1,6 +1,5 @@
 @model LogUser
 <h2>Login.</h2>
-<h4>@TempData["success"]</h4>
 <form method="post" asp-controller="Home" asp-action="Login">
     <div class="form-group">
         <span asp-validation-for="email"></span>

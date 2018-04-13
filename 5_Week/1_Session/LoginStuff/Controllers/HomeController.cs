@@ -85,7 +85,7 @@ namespace ModelsContinued.Controllers
             }
             if(ModelState.IsValid)
                 return RedirectToAction("LoginView");
-            return View("LoginView", user);
+            return View("LoginView");
             // log user in!
 
         }
