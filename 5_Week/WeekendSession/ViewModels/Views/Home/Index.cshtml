@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IndexViewModel
+<h1>Today's Date: (@Model.Now.ToString("D"))</h1>
+<h2><strong>First Name:</strong>@Model.TheUser.FirstName</h2>
+<h2><strong>Last Name:</strong>@Model.TheUser.LastName</h2>
+<h2><strong>Email:</strong>@Model.TheUser.Email</h2>
+<hr>
+<h3>Here are some words:</h3>
+@foreach(string word in Model.Words)
+{
+    <p>@word</p>
+}
