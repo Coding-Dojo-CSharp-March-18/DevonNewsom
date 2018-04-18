@@ -13,26 +13,24 @@ namespace ModelsContinued.Controllers
     public class HomeController : Controller
     {
         // int? user_id;
+        private UserFactory _userFactory;
         public HomeController()
         {
-
+            _userFactory = new UserFactory();
         }
+
         [HttpGet("")]
         public IActionResult Index()
         {
-        
-            return View();
-        }
+            
+            
 
-        [HttpGet("signup")]
-        public IActionResult LoginView()
-        {
             return View();
         }
-        [HttpGet("test")]
-        public IActionResult Redirecting()
+        [HttpGet("users")]
+        public IActionResult Users()
         {
-            return RedirectToRoute("");
+            return View(_userFactory.AllUsers());
         }
 
         [HttpPost("create")]
@@ -46,10 +44,9 @@ namespace ModelsContinued.Controllers
                 PasswordHasher<User> hasher = new PasswordHasher<User>();
 
                 string hashedPW = hasher.HashPassword(user, user.password);
-                
-                string createUser = $@"INSERT INTO users (first_name, last_name, email, password, created_at, updated_at)
-                    VALUES ('{user.first_name}', '{user.last_name}', '{user.email}', '{hashedPW}', NOW(), NOW());";
-                DbConnector.Execute(createUser);
+                user.password = hashedPW;
+                _userFactory.CreateUser(user);
+
                 return RedirectToAction("LoginView");
             }
             return View("Index");
@@ -62,9 +59,7 @@ namespace ModelsContinued.Controllers
             if(ModelState.IsValid)
             {
                 // check that email is in the database
-                string checkUserWithEmail = $"SELECT * FROM users WHERE email = '{user.log_email}'";
-            List<Dictionary<string, object>> userFromDB = DbConnector.Query(checkUserWithEmail);
-                if(userFromDB.Count < 1)
+                if(_userFactory.UserExists(user.log_email))
                 {
                     ModelState.AddModelError("log_email", "Invalid Email/Password");
                 }

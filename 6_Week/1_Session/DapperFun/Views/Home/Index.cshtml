@@ -1,2 +1,13 @@
 @Html.Partial("Registration")
 @Html.Partial("Login")
+
+<form action="">
+
+    <select asp-for="user_id">
+        @foreach(var user in Model.Users)
+        {
+            <option value="@user.user_id">@user.first_name @user.first_name</option>
+        }
+    </select>
+
+</form>
