@@ -1,0 +1,7 @@
+@model List<Book>
+<h1>Books by Gen Xers</h1>
+<hr>
+@foreach(var book in Model)
+{
+    <p>@book.title (@book.date_published.ToString("d")) - by @book.Author.name</p>
+}

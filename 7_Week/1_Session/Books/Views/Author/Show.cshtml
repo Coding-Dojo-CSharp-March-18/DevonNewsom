@@ -1,0 +1,22 @@
+@model Author
+<h1>@Model.name</h1>
+<hr>
+<h4><strong>DOB:</strong> @Model.dob.ToString("D")</h4>
+<h2>Bibliography</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Title</td>
+            <td>Date Published</td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(Book book in Model.Bibliogrpahy)
+    {
+        <tr>
+            <td>@book.title</td>
+            <td>@book.date_published.ToString("d")</td>
+        </tr>
+    }
+    </tbody>
+</table>
