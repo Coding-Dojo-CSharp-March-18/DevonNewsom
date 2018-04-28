@@ -1,0 +1,65 @@
+@model BookIndex
+<h2>Your Reviewed Books!</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date Published</th>
+            <th>Author</th>
+            <th>Average Rating</th>
+            <th>Number of Reviews</th>
+        </tr>
+
+    </thead>
+    <tbody>
+    @foreach(var book in Model.Reviewed)
+    {
+        bool notEmpty = (book.ReceivedReviews.Count > 0);
+        string avg = (notEmpty)
+            ? book.ReceivedReviews.Average(r => r.rating).ToString()
+            : "N/A";
+
+        <tr>
+            <td>@book.title</td>
+            <td>@book.date_published</td>
+            <td>@book.Author.name</td>
+            <td>@avg</td>
+            <td>@book.ReceivedReviews.Count</td>
+        
+        </tr>        
+    }
+    </tbody>
+</table>
+<h2>Review THESE books!</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date Published</th>
+            <th>Author</th>
+            <th>Average Rating</th>
+            <th>Number of Reviews</th>
+            <th>Action</th>
+        </tr>
+
+    </thead>
+    <tbody>
+    @foreach(var book in Model.NotReviewed)
+    {
+        bool notEmpty = (book.ReceivedReviews.Count > 0);
+        string avg = (notEmpty)
+            ? book.ReceivedReviews.Average(r => r.rating).ToString()
+            : "N/A";
+
+        <tr>
+            <td>@book.title</td>
+            <td>@book.date_published</td>
+            <td>@book.Author.name</td>
+            <td>@avg</td>
+            <td>@book.ReceivedReviews.Count</td>
+            <td><a href="#"><button>REVIEW</button></a></td>
+        
+        </tr>        
+    }
+    </tbody>
+</table>

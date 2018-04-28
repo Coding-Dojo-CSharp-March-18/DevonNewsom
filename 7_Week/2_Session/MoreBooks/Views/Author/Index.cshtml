@@ -1,0 +1,7 @@
+@model List<Author>
+<h1>Authors</h1>
+<hr>
+@foreach(var author in Model)
+{
+    <a href="/authors/@author.author_id">@author.name</a>
+}
