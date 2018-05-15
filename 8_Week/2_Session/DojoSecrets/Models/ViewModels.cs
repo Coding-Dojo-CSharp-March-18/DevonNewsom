@@ -2,9 +2,10 @@ using System.Collections.Generic;
 
 namespace Secrets.Models
 {
-    public class DashboardViewModel
+    public class DashboardModel
     {
-        public int UserId {get;set;}
-        public List<Secret> AllSecrets {get;set;}
+        public List<Secret> RecentSecrets {get;set;}
+        public Secret NewSecret {get;set;}
+        public User LoggedInUser {get;set;}
     }
 }

@@ -32,8 +32,6 @@ namespace Secrets.Models
         
         [Required]
         public string password {get;set;}
-        public List<Secret> CreatedSecrets {get;set;}
-        public List<Like> SecretsLiked {get;set;}
     }
     public class NewUser : User
     {

@@ -9,7 +9,5 @@ namespace Secrets.Models
         public int like_id {get;set;}
         public int user_id {get;set;}
         public int secret_id {get;set;}
-        public User Liker {get;set;}
-        public Secret Liked {get;set;}
     }
 }
